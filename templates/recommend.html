@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        background-color: #0c0d0e;
+    }
+
+    .text {
+        color: white
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Book Recommendation System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="/recommend">Recommend</a>
+                <a class="nav-link active" href="#">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center" style="margin-top: 50px;">
+                <h1 class="text">Recommend Books</h1>
+                <form action="/recommend_books" method="post">
+                    <input type="text" class="form-control" placeholder="search book" name="search" id="search" style="margin-top: 40px;">
+                    <input type="submit" class="btn btn-lg btn-warning" style="margin-top: 42px;">
+                </form>
+            </div>
+        {%if data%}
+        {%for i in data%}
+        <div class="col-md-3" style="margin-top: 100px;">
+            <div class="card" style="height: auto;">
+                <div class="card-body" style="padding: 10px;">
+                    <img class="card-img-top" style="height: 250px; " src="{{i[2]}}" >
+                    <h5 class="text-black" style="font-size: 1.2rem; margin-bottom: 5px;">{{i[0]}}</h5>
+                    <h5 class="text-black" style="font-size: 1rem; margin-bottom: 5px;">{{i[1]}}</h5>
+                </div>
+            </div>
+        </div>   
+        {%endfor%}    
+        {% endif %} 
+    </div>
+</body>
+
+</html>
